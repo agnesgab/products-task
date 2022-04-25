@@ -1,0 +1,16 @@
+<div class="attributes-container">
+
+    <input type="hidden" name="type_id" value="{{ type.id }}">
+    <input type="hidden" name="type_name" value="{{ type.typeName }}">
+    {% for label in inputAttribute.label %}
+    <div class="label-input-container">
+        <label class="input-label">{{ label }} ({{ inputAttribute.unit }})</label>
+        <input class="add-input" name="{{ label }}" type="number" min="1" step="1">
+    </div>
+    {% endfor %}
+
+</div>
+
+<div>
+    <p>{{ inputAttribute.description }}</p>
+</div>

@@ -1,0 +1,70 @@
+{% include('templates/header.html') %}
+<div class="action-btn-container">
+    <a class="action-btn" href="/">Cancel</a>
+    <input class="action-btn" type="submit" form="product-form" value="Save">
+</div>
+<div class="add-container-large">
+
+    <div class="form-container">
+
+        <form id="product-form" method="post" action="/add-product/validate">
+            <div class="form-inner-container-left">
+                <div class="input-field-container">
+                    <div class="label-input-container">
+                        <label class="input-label">SKU</label>
+                        <input id="sku" class="add-input" name="sku" type="text" placeholder="e.g. JVC200123" value="{{ input['sku'] }}">
+                        <div class="error-container">
+                            <small>{{ errors['sku'] }}</small>
+                        </div>
+                    </div>
+
+                    <div class="label-input-container">
+                        <label class="input-label">Name</label>
+                        <input id="name" class="add-input" name="name" type="text" placeholder="e.g. Acme DISC" value="{{ input['name'] }}">
+                        <div class="error-container">
+                            <small>{{ errors['name'] }}</small>
+                        </div>
+                    </div>
+
+                    <div class="label-input-container">
+                        <label class="input-label">Price ($)</label>
+                        <input id="price" class="add-input" name="price" type="number" min="0.01" step="0.01"
+                               placeholder="50.00" value="{{ input['price'] }}">
+                        <div class="error-container">
+                            <small>{{ errors['price'] }}</small>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="type-field-container">
+                    <div class="label-input-container">
+                        <label class="input-label">Type</label>
+                        <select name="" id="productType" class="add-input" onchange="selectType()">
+                            <option value="" disabled selected>Product Type</option>
+                            {% for type in types %}
+                            <option id="{{ type.id }}" class="add-input" value="{{ type.typeName }}">{{ type.typeName }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <div class="error-container">
+                            <small>{{ errors['type_id'] }}</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-inner-container-right">
+                <div class="type-input-field-container">
+                    <div class="error-container">
+                        <small>{{ errors['value'] }}</small>
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% include('templates/footer.html') %}

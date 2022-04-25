@@ -1,0 +1,28 @@
+{% include('templates/header.html') %}
+<div class="action-btn-container">
+    <a class="action-btn" href="/add-product">Add</a>
+    <input id="delete-product-btn" class="action-btn" type="submit" form="mass-delete-form" value="Mass Delete">
+</div>
+
+<form id="mass-delete-form" method="post" action="/delete">
+    <div class="container-large">
+        {% for product in products %}
+        <div class="item-box">
+            <div class="box-checkbox-container">
+                <input class="delete-checkbox" name="products-delete[]" value="{{ product.id }}" type="checkbox"/>
+            </div>
+            <div class="box-text-container">
+                <ul class="box-list">
+                    <li class="box-list-item">{{ product.sku }}</li>
+                    <li class="box-list-item">{{ product.name }}</li>
+                    <li class="box-list-item">{{ product.price }}$</li>
+                    <li class="box-list-item">{{ product.attribute.name }}: {{ product.attribute.value}} {{
+                        product.unit}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</form>
+{% include('templates/footer.html') %}
