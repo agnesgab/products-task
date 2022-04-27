@@ -48,7 +48,6 @@ function fetchMethodAndURIFromSomewhere(Dispatcher $dispatcher, $container): voi
             $allowedMethods = $routeInfo[1];
             break;
         case FastRoute\Dispatcher::FOUND:
-
             $controller = $routeInfo[1][0];
             $method = $routeInfo[1][1];
             $vars = $routeInfo[2];
